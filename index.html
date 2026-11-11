@@ -1,95 +1,1481 @@
-<!DOCTYPE html>
-<html lang="ar">
+<!doctype html>
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حجز موعد</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-            background-color: #111011; /* لون الخلفية العام */
-            color: #ffcc00;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#faf6f1" />
+  <meta name="description" content="احجز موعدك في عيادة الدكتور زيد شاكر — اختر الوقت المناسب لك بسهولة وأمان." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#faf6f1', sand: '#f3ebe1', mauve: '#6c5862',
+            'mauve-deep': '#4e3d47', 'mauve-ink': '#372931',
+            lilac: '#dcc9d3', gold: '#f4c871',
+            'gold-deep': '#cf9d45', 'gold-soft': '#fbeccb',
+          }
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: #141213; /* لون خلفية الصندوق */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px #ffffff
-        }
-        h2 {
-            color: #ffcc00; /* لون العنوان */
-        }
-        p {
-            color: #ffcc00;
-        }
-        iframe {
-            width: 100%;
-            height: 700px;
-            border: none;
-            border-radius: 10px;
-        }
-    </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '3020561221436347');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=3020561221436347&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --cream: #faf6f1; --sand: #f3ebe1; --mauve: #6c5862;
+      --mauve-deep: #4e3d47; --mauve-ink: #372931; --lilac: #dcc9d3;
+      --gold: #f4c871; --gold-deep: #cf9d45; --gold-soft: #fbeccb;
+      --mouse-x: 50%; --mouse-y: 50%;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    html[dir="rtl"] body { font-family: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif; }
+    html[dir="ltr"] body { font-family: "Space Grotesk", "IBM Plex Sans Arabic", sans-serif; }
+    body {
+      background-color: var(--cream); color: var(--mauve-deep);
+      overflow-x: clip; -webkit-font-smoothing: antialiased;
+      min-height: 100vh; line-height: 1.6; cursor: none;
+    }
+    @media (pointer: coarse) { body { cursor: auto; } }
+    ::selection { background: rgba(244, 200, 113, 0.55); color: #372931; }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f3ebe1; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #cf9d45, #6c5862); border-radius: 99px; border: 2px solid #f3ebe1; }
+    ::-webkit-scrollbar-thumb:hover { background: #cf9d45; }
+
+    .glass {
+      background: linear-gradient(155deg, rgba(255,255,255,0.92), rgba(252,248,242,0.75));
+      -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+      border: 1px solid rgba(108,88,98,0.13);
+      box-shadow: 0 18px 44px -26px rgba(78,61,71,0.28);
+    }
+    .glass-strong {
+      background: linear-gradient(160deg, rgba(255,255,255,0.97), rgba(252,248,243,0.92));
+      -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
+      border: 1px solid rgba(108,88,98,0.14);
+      box-shadow: 0 24px 70px -30px rgba(55,41,49,0.35);
+    }
+    .text-gradient {
+      background: linear-gradient(100deg, #6c5862 8%, #bb8c45 55%, #dfa63e 95%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .text-gradient-gold {
+      background: linear-gradient(100deg, #f7d997, #f4c871 50%, #e8b44d);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .bg-grid {
+      background-image:
+        linear-gradient(rgba(108,88,98,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(108,88,98,0.055) 1px, transparent 1px);
+      background-size: 54px 54px;
+    }
+    .bg-dots-gold {
+      background-image: radial-gradient(rgba(244,200,113,0.16) 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+    }
+    .noise {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    }
+
+    .tilt-3d {
+      --tilt-rotate-x: 0deg; --tilt-rotate-y: 0deg;
+      --tilt-scale: 1; --tilt-lift: 0px;
+      --tilt-glow-x: 50%; --tilt-glow-y: 50%; --tilt-glow-opacity: 0;
+      transform: perspective(1200px) rotateX(var(--tilt-rotate-x)) rotateY(var(--tilt-rotate-y)) translateY(var(--tilt-lift)) scale(var(--tilt-scale));
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform; position: relative;
+    }
+    .tilt-3d.tilting { transition: transform 0.08s linear, box-shadow 0.5s ease; }
+    .tilt-3d::before {
+      content: ""; position: absolute; inset: 0; border-radius: inherit;
+      background: radial-gradient(500px circle at var(--tilt-glow-x) var(--tilt-glow-y), rgba(244, 200, 113, 0.22), rgba(207, 157, 69, 0.08) 40%, transparent 65%);
+      opacity: var(--tilt-glow-opacity); transition: opacity 0.4s ease; pointer-events: none; z-index: 2;
+    }
+    .tilt-3d::after {
+      content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px;
+      background: radial-gradient(350px circle at var(--tilt-glow-x) var(--tilt-glow-y), rgba(207, 157, 69, 0.85), rgba(244, 200, 113, 0.3) 30%, transparent 50%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: var(--tilt-glow-opacity); transition: opacity 0.4s ease; pointer-events: none; z-index: 3;
+    }
+    .tilt-3d .tilt-inner { transform: translateZ(30px); transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+    .tilt-3d .tilt-inner-deep { transform: translateZ(50px); transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+    @media (pointer: coarse) { .tilt-3d { transform: none !important; } .tilt-3d::before, .tilt-3d::after { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .tilt-3d { transform: none !important; transition: none !important; } }
+
+    .cursor-dot {
+      position: fixed; top: 0; left: 0; width: 8px; height: 8px;
+      background: linear-gradient(135deg, #cf9d45, #f4c871); border-radius: 50%;
+      pointer-events: none; z-index: 10000; transform: translate(-50%, -50%);
+      transition: width 0.25s ease, height 0.25s ease, background 0.25s ease;
+      box-shadow: 0 0 12px rgba(207,157,69,0.8), 0 0 4px rgba(244,200,113,0.9);
+      mix-blend-mode: multiply;
+    }
+    .cursor-ring {
+      position: fixed; top: 0; left: 0; width: 40px; height: 40px;
+      border: 1.5px solid rgba(207,157,69,0.6); border-radius: 50%;
+      pointer-events: none; z-index: 9999; transform: translate(-50%, -50%);
+      transition: width 0.3s cubic-bezier(0.22,1,0.36,1), height 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s ease, background 0.3s ease;
+    }
+    .cursor-ring.hover { width: 60px; height: 60px; background: rgba(244, 200, 113, 0.15); border-color: rgba(207,157,69,0.9); border-width: 2px; }
+    .cursor-ring.click { width: 30px; height: 30px; background: rgba(244, 200, 113, 0.35); border-color: #cf9d45; }
+    .cursor-dot.hover { width: 12px; height: 12px; background: linear-gradient(135deg, #6c5862, #cf9d45); }
+    .cursor-trail {
+      position: fixed; width: 6px; height: 6px;
+      background: radial-gradient(circle, rgba(244,200,113,0.9), rgba(207,157,69,0));
+      border-radius: 50%; pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%); animation: trailFade 0.7s ease-out forwards;
+    }
+    @keyframes trailFade { 0% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.2); } }
+
+    .magnetic { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); will-change: transform; }
+    .ripple {
+      position: absolute; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.7), rgba(255,255,255,0));
+      transform: translate(-50%, -50%) scale(0); animation: rippleAnim 0.7s ease-out forwards;
+      pointer-events: none; z-index: 3;
+    }
+    @keyframes rippleAnim { to { transform: translate(-50%, -50%) scale(4); opacity: 0; } }
+    .glow-btn { position: relative; isolation: isolate; }
+    .glow-btn::before {
+      content: ""; position: absolute; inset: -3px; border-radius: inherit;
+      background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), rgba(244, 200, 113, 0.8), rgba(207, 157, 69, 0.4) 40%, transparent 70%);
+      opacity: 0; transition: opacity 0.35s ease; z-index: -1; filter: blur(8px);
+    }
+    .glow-btn:hover::before { opacity: 1; }
+    .glow-btn::after {
+      content: ""; position: absolute; inset: 0; border-radius: inherit;
+      background: radial-gradient(150px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.4), transparent 60%);
+      opacity: 0; transition: opacity 0.35s ease; pointer-events: none; z-index: 1;
+    }
+    .glow-btn:hover::after { opacity: 1; }
+
+    @keyframes wiggle-entrance {
+      0% { transform: rotate(0deg) scale(0.6); opacity: 0; }
+      10% { transform: rotate(-18deg) scale(0.85); opacity: 1; }
+      20% { transform: rotate(16deg) scale(1); }
+      30% { transform: rotate(-14deg) scale(1.05); }
+      40% { transform: rotate(12deg) scale(1.02); }
+      50% { transform: rotate(-10deg) scale(1.05); }
+      60% { transform: rotate(8deg) scale(1.01); }
+      70% { transform: rotate(-6deg) scale(1.03); }
+      80% { transform: rotate(4deg) scale(1); }
+      90% { transform: rotate(-2deg) scale(1.01); }
+      100% { transform: rotate(0deg) scale(1); opacity: 1; }
+    }
+    .animate-wiggle-entrance {
+      animation: wiggle-entrance 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+      transform-origin: center center;
+    }
+    @keyframes wiggle-soft {
+      0%, 92%, 100% { transform: rotate(0deg); }
+      93% { transform: rotate(-8deg); }
+      94% { transform: rotate(8deg); }
+      95% { transform: rotate(-6deg); }
+      96% { transform: rotate(6deg); }
+      97% { transform: rotate(-3deg); }
+      98% { transform: rotate(3deg); }
+    }
+    .animate-wiggle-soft {
+      animation: wiggle-entrance 2.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both,
+                 wiggle-soft 8s ease-in-out 3s infinite;
+      transform-origin: center center;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .animate-wiggle-entrance, .animate-wiggle-soft { animation: none !important; }
+    }
+
+    @keyframes ping-dot { 0% { transform: scale(1); opacity: 0.9; } 80%, 100% { transform: scale(2.6); opacity: 0; } }
+    .animate-ping-dot { animation: ping-dot 1.8s cubic-bezier(0,0,0.2,1) infinite; }
+    @keyframes orb-drift { 0%, 100% { transform: translate(0,0) scale(1); } 33% { transform: translate(70px,-50px) scale(1.12); } 66% { transform: translate(-50px,60px) scale(0.94); } }
+    .animate-orb { animation: orb-drift 18s ease-in-out infinite; }
+    @keyframes shine-sweep { from { transform: translateX(-130%) skewX(-18deg); } to { transform: translateX(230%) skewX(-18deg); } }
+    .shine { position: relative; overflow: hidden; }
+    .shine::after {
+      content: ""; position: absolute; top: -30%; bottom: -30%; width: 34%; inset-inline-start: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+      transform: translateX(-130%) skewX(-18deg); pointer-events: none;
+    }
+    .shine:hover::after { animation: shine-sweep 0.9s ease forwards; }
+
+    .anim-fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.85s cubic-bezier(0.22,1,0.36,1), transform 0.85s cubic-bezier(0.22,1,0.36,1); }
+    .anim-fade-up.visible { opacity: 1; transform: translateY(0); }
+    .anim-scale-in { opacity: 0; transform: scale(0.92); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+    .anim-scale-in.visible { opacity: 1; transform: scale(1); }
+
+    /* Loading */
+    #loading-screen {
+      position: fixed; inset: 0; z-index: 99999;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: linear-gradient(160deg, #faf6f1 0%, #f3ebe1 100%);
+      transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), visibility 0.9s ease;
+      overflow: hidden;
+    }
+    #loading-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    #loading-screen::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(244,200,113,0.25), transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(108,88,98,0.12), transparent 50%);
+      pointer-events: none;
+      animation: loadingBgShift 6s ease-in-out infinite alternate;
+    }
+    @keyframes loadingBgShift { 0% { transform: scale(1) rotate(0deg); } 100% { transform: scale(1.15) rotate(8deg); } }
+    .loading-logo {
+      position: relative; width: 130px; height: 130px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, #6c5862, #4e3d47);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 25px 70px -20px rgba(78,61,71,0.55), 0 0 0 8px rgba(244,200,113,0.15), 0 0 0 16px rgba(244,200,113,0.08);
+      animation: logoWiggle3s 3s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      z-index: 2;
+    }
+    .loading-logo img { width: 80px; height: 80px; object-fit: contain; }
+    .loading-logo::after {
+      content: ""; position: absolute; inset: -30px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(244,200,113,0.4), transparent 65%);
+      animation: haloPulse 1.5s ease-in-out infinite;
+      z-index: -1; pointer-events: none;
+    }
+    @keyframes haloPulse { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.25); opacity: 0.9; } }
+    @keyframes logoWiggle3s {
+      0% { transform: rotate(0deg) scale(0.4); opacity: 0; }
+      8% { transform: rotate(-22deg) scale(0.7); opacity: 1; }
+      16% { transform: rotate(20deg) scale(1.05); }
+      24% { transform: rotate(-18deg) scale(1.1); }
+      32% { transform: rotate(16deg) scale(1.08); }
+      40% { transform: rotate(-14deg) scale(1.1); }
+      48% { transform: rotate(12deg) scale(1.06); }
+      56% { transform: rotate(-10deg) scale(1.08); }
+      64% { transform: rotate(8deg) scale(1.04); }
+      72% { transform: rotate(-6deg) scale(1.05); }
+      80% { transform: rotate(4deg) scale(1.02); }
+      88% { transform: rotate(-2deg) scale(1.02); }
+      94% { transform: rotate(1deg) scale(1); }
+      100% { transform: rotate(0deg) scale(1); opacity: 1; }
+    }
+    .loading-text {
+      margin-top: 40px; font-size: 13px; font-weight: 700;
+      letter-spacing: 0.35em; color: #6c5862; text-transform: uppercase;
+      animation: textFadeIn 0.8s ease 1.2s both; z-index: 2;
+    }
+    @keyframes textFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .loading-dots { margin-top: 20px; display: flex; gap: 8px; animation: textFadeIn 0.8s ease 1.5s both; z-index: 2; }
+    .loading-dots span {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: linear-gradient(135deg, #f4c871, #cf9d45);
+      box-shadow: 0 0 12px rgba(244,200,113,0.7);
+      animation: dotBounce 1.4s ease-in-out infinite;
+    }
+    .loading-dots span:nth-child(1) { animation-delay: 0s; }
+    .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes dotBounce {
+      0%, 60%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+      30% { transform: translateY(-10px) scale(1.3); opacity: 1; }
+    }
+    .loading-progress {
+      position: absolute; bottom: 0; inset-inline: 0; height: 4px;
+      background: rgba(108,88,98,0.1); overflow: hidden; z-index: 2;
+    }
+    .loading-progress-inner {
+      height: 100%; width: 0%;
+      background: linear-gradient(90deg, #f4c871, #cf9d45, #f4c871);
+      background-size: 200% 100%;
+      border-radius: 0 99px 99px 0;
+      box-shadow: 0 0 20px rgba(244,200,113,0.8);
+      animation: progressFill3s 3s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+                 progressShine 1.5s linear infinite;
+    }
+    @keyframes progressFill3s { from { width: 0%; } to { width: 100%; } }
+    @keyframes progressShine { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    #scroll-progress {
+      position: fixed; top: 0; inset-inline: 0; height: 3px; z-index: 90;
+      background: linear-gradient(90deg, #6c5862, #cf9d45, #f4c871);
+      box-shadow: 0 0 14px rgba(207,157,69,0.55);
+      transform-origin: 0% 50%; transform: scaleX(0); transition: transform 0.1s linear;
+    }
+    html[dir="rtl"] #scroll-progress { transform-origin: 100% 50%; }
+
+    #mobile-menu {
+      position: fixed; inset: 0; z-index: 80;
+      background: rgba(250,246,241,0.97);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      display: flex; flex-direction: column;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    #mobile-menu.open { opacity: 1; visibility: visible; }
+    .nav-pill { position: relative; }
+    .nav-pill .pill-bg {
+      position: absolute; inset: 0; border-radius: 9999px;
+      border: 1px solid rgba(207,157,69,0.45); background: rgba(244,200,113,0.3);
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .nav-pill.active .pill-bg { opacity: 1; }
+
+    .click-particle {
+      position: fixed; width: 8px; height: 8px; border-radius: 50%;
+      pointer-events: none; z-index: 9997;
+      background: radial-gradient(circle, rgba(244,200,113,1), rgba(207,157,69,0.5));
+      box-shadow: 0 0 12px rgba(244,200,113,0.8);
+    }
+    .hover-label {
+      position: fixed; padding: 4px 10px; background: rgba(55,41,49,0.9);
+      color: #f4c871; font-size: 10px; font-weight: 700; border-radius: 6px;
+      pointer-events: none; z-index: 10001; opacity: 0;
+      transform: translate(-50%, -140%) scale(0.8);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      white-space: nowrap; backdrop-filter: blur(6px); letter-spacing: 0.05em;
+    }
+    .hover-label.active { opacity: 1; transform: translate(-50%, -140%) scale(1); }
+    .glow-orb {
+      position: fixed; width: 400px; height: 400px; border-radius: 50%;
+      pointer-events: none; z-index: 2;
+      background: radial-gradient(circle, rgba(244,200,113,0.18), rgba(244,200,113,0.06) 40%, transparent 70%);
+      mix-blend-mode: multiply; transform: translate(-50%, -50%);
+      filter: blur(20px); will-change: transform;
+    }
+
+    .fab {
+      position: fixed; bottom: 24px; inset-inline-end: 24px; z-index: 60;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, #f7d997, #f4c871, #cf9d45);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 12px 34px -8px rgba(207,157,69,0.7), 0 0 0 0 rgba(244,200,113,0.5);
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+      animation: fabPulse 2.5s ease-in-out infinite;
+    }
+    .fab:hover { transform: scale(1.15); box-shadow: 0 16px 44px -8px rgba(207,157,69,0.9), 0 0 0 8px rgba(244,200,113,0.15); }
+    @keyframes fabPulse {
+      0%, 100% { box-shadow: 0 12px 34px -8px rgba(207,157,69,0.7), 0 0 0 0 rgba(244,200,113,0.5); }
+      50% { box-shadow: 0 12px 34px -8px rgba(207,157,69,0.7), 0 0 0 12px rgba(244,200,113,0); }
+    }
+
+    /* ============ STATUS PILL ============ */
+    #live-status-pill { display: none; }
+    @media (min-width: 640px) { #live-status-pill { display: inline-flex; } }
+
+    .status-pill {
+      align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 99px;
+      font-size: 10px; font-weight: 800; letter-spacing: 0.05em;
+      transition: all 0.3s ease;
+    }
+    .status-pill.open { background: rgba(34,197,94,0.15); color: #16a34a; border: 1px solid rgba(34,197,94,0.3); }
+    .status-pill.closed { background: rgba(239,68,68,0.12); color: #dc2626; border: 1px solid rgba(239,68,68,0.25); }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; position: relative; }
+    .status-pill.open .status-dot::after {
+      content: ""; position: absolute; inset: -3px; border-radius: 50%;
+      background: currentColor; opacity: 0.4; animation: statusPulse 1.8s ease-out infinite;
+    }
+    @keyframes statusPulse { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(2); opacity: 0; } }
+
+    /* ============ CAL.COM CONTAINER STYLING ============ */
+    .cal-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: calc(1.8rem - 1px);
+      background: #fffdf9;
+      min-height: 720px;
+    }
+    @media (max-width: 640px) {
+      .cal-wrap { min-height: 900px; }
+    }
+    /* Cal embed wrapper height (فقط داخل الحاوية) */
+    .cal-wrap #my-cal-inline-me {
+      width: 100% !important;
+      height: 720px !important;
+      overflow: auto;
+      background: #fffdf9;
+    }
+    @media (max-width: 640px) {
+      .cal-wrap #my-cal-inline-me { height: 900px !important; }
+    }
+
+    /* Cal loading shimmer */
+    .cal-loading {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+      background: linear-gradient(155deg, rgba(255,255,255,0.92), rgba(252,248,242,0.75));
+      z-index: 5; transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    .cal-loading.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .cal-loading-dots { display: inline-flex; gap: 6px; }
+    .cal-loading-dots span {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: linear-gradient(135deg, #f4c871, #cf9d45);
+      box-shadow: 0 0 10px rgba(244,200,113,0.7);
+      animation: dotBounce 1.4s ease-in-out infinite;
+    }
+    .cal-loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .cal-loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+    .cal-loading p { font-size: 12px; font-weight: 700; color: #6c5862; letter-spacing: 0.05em; }
+
+    button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid #cf9d45; outline-offset: 2px; }
+    img { max-width: 100%; height: auto; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>احجز موعدك الآن</h2>
-        <p>اختر الوقت المناسب لك من خلال التقويم أدناه:</p>
+  <!-- LOADING SCREEN -->
+  <div id="loading-screen">
+    <div class="loading-logo">
+      <img src="logo.png" alt="Logo" />
+    </div>
+    <div class="loading-text">Dr. Zaid Shakir clinic</div>
+    <div class="loading-dots">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="loading-progress"><div class="loading-progress-inner"></div></div>
+  </div>
 
-           <!-- Calendly inline widget begin -->
-           <div class="calendly-inline-widget" data-url="https://calendly.com/drzaidshakir?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
-           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-           <!-- Calendly inline widget end -->
-       </div>
-   
+  <!-- CURSOR -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+  <div class="glow-orb" id="glow-orb"></div>
+  <div class="hover-label" id="hover-label"></div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let calendlyFrame = document.getElementById("calendly-iframe");
+  <!-- SCROLL PROGRESS -->
+  <div id="scroll-progress"></div>
 
-            calendlyFrame.onload = function() {
-                let styleCode = `
-                    /* جعل لون أرقام الأيام ورديًا */
-                    .calendly-calendar-day { color: #ff66b2 !important; font-weight: bold !important; }
+  <!-- BACKGROUND FX -->
+  <div class="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse 85% 60% at 50% -10%, #fdf8f1 0%, #faf6f1 60%);"></div>
+    <div class="animate-orb absolute -top-32 start-[-8%] size-[42rem] rounded-full" style="background: rgba(244,200,113,0.22); filter: blur(130px);"></div>
+    <div class="animate-orb absolute bottom-[-20%] end-[-10%] size-[38rem] rounded-full" style="background: rgba(108,88,98,0.1); filter: blur(140px); animation-delay: -8s;"></div>
+    <div class="absolute top-1/3 start-1/2 size-[26rem] rounded-full" style="background: rgba(244,200,113,0.12); filter: blur(120px);"></div>
+    <canvas id="bg-canvas" class="absolute inset-0"></canvas>
+    <div class="absolute inset-0 bg-grid opacity-70" style="mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black, transparent 80%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black, transparent 80%);"></div>
+    <div class="noise absolute inset-0 opacity-[0.05]"></div>
+  </div>
 
-                    /* تخصيص خلفية التقويم */
-                    body { background-color: #222 !important; }
-                    .calendly-overlay, .calendly-popup-content { background: #333 !important; }
+  <!-- FAB -->
+  <button class="fab" id="fab-book" aria-label="احجز الآن" data-cursor-label="احجز">
+    <svg class="size-6 text-mauve-ink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
+  </button>
 
-                    /* تخصيص الأزرار */
-                    button { background: #ffcc00 !important; color: #222 !important; }
+  <!-- HEADER -->
+  <header id="main-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-500" style="transform: translateY(-80px); opacity: 0;">
+    <div id="header-inner" class="mx-auto flex items-center justify-between gap-4 px-5 transition-all duration-500 lg:px-10 max-w-7xl bg-transparent py-5">
 
-                    /* تخصيص حقول الإدخال */
-                    input, textarea { background: #444 !important; color: #fff !important; border: 1px solid #ffcc00 !important; }
-                `;
-                
-                let styleElement = document.createElement("style");
-                styleElement.innerHTML = styleCode;
-                calendlyFrame.contentWindow.document.head.appendChild(styleElement);
-            };
+      <a href="index.html" class="group flex items-center gap-3 shrink-0 magnetic" aria-label="logo" data-cursor-label="الرئيسية">
+        <span class="animate-wiggle-soft relative flex size-11 items-center justify-center overflow-hidden rounded-xl transition-transform duration-500 group-hover:scale-110" style="background: linear-gradient(135deg, #6c5862, #4e3d47); box-shadow: 0 10px 24px -8px rgba(78,61,71,0.5);">
+          <img src="logo.png" alt="Logo" class="size-7 object-contain" />
+          <span class="absolute inset-0 rounded-xl border border-white/20"></span>
+        </span>
+        <span class="leading-tight hidden sm:block">
+          <span class="block text-[15px] font-bold text-mauve-ink" data-i18n="brand.name">د. زيد شاكر</span>
+          <span class="block text-[9px] font-semibold tracking-[0.22em] text-gold-deep">ADVANCED CARE</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-1 lg:flex" aria-label="main">
+        <a href="index.html" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="الرئيسية">
+          <span class="pill-bg"></span>
+          <span class="relative" data-i18n="nav.home">الرئيسية</span>
+        </a>
+        <a href="about.html" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="من نحن">
+          <span class="pill-bg"></span>
+          <span class="relative" data-i18n="nav.about">من نحن</span>
+        </a>
+        <a href="services.html" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="الخدمات">
+          <span class="pill-bg"></span>
+          <span class="relative" data-i18n="nav.services">الخدمات</span>
+        </a>
+        <a href="booking.html" class="nav-pill active relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve-ink magnetic" data-cursor-label="الحجز">
+          <span class="pill-bg"></span>
+          <span class="relative" data-i18n="nav.booking">الحجز</span>
+        </a>
+        <a href="contact.html" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="تواصل">
+          <span class="pill-bg"></span>
+          <span class="relative" data-i18n="nav.contact">تواصل معنا</span>
+        </a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <div id="live-status-pill" class="status-pill closed" aria-live="polite">
+          <span class="status-dot"></span>
+          <span id="live-status-text">...</span>
+        </div>
+
+        <div class="flex items-center rounded-full border border-mauve/15 bg-white/70 p-1 text-[11px] font-bold backdrop-blur-md sm:text-xs" data-cursor-label="اللغة">
+          <button id="lang-en" class="relative rounded-full px-2.5 py-1.5 transition-colors duration-300 text-mauve/60 hover:text-mauve-ink sm:px-3">EN</button>
+          <button id="lang-ar" class="relative rounded-full px-2.5 py-1.5 transition-colors duration-300 text-mauve-ink sm:px-3" style="background: linear-gradient(90deg, #f4c871, #eeb44d); box-shadow: 0 4px 14px -4px rgba(207,157,69,0.7);">عربي</button>
+        </div>
+
+        <button id="mobile-menu-btn" class="glass flex size-10 items-center justify-center rounded-xl text-mauve-ink lg:hidden shrink-0" aria-label="القائمة">
+          <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu">
+    <div class="flex items-center justify-between px-5 py-5">
+      <div class="flex items-center gap-3">
+        <span class="flex size-10 items-center justify-center rounded-xl overflow-hidden" style="background: linear-gradient(135deg, #6c5862, #4e3d47);">
+          <img src="logo.png" alt="Logo" class="size-7 object-contain" />
+        </span>
+        <span class="text-sm font-bold text-mauve-ink" data-i18n="brand.name">د. زيد شاكر</span>
+      </div>
+      <button id="mobile-menu-close" class="glass flex size-10 items-center justify-center rounded-xl text-mauve-ink" aria-label="إغلاق">
+        <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <nav class="flex flex-1 flex-col items-start justify-center gap-2 px-8">
+      <a href="index.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
+        <span class="text-2xl font-bold text-mauve-deep transition-colors group-hover:text-gold-deep" data-i18n="nav.home">الرئيسية</span>
+        <span class="text-xs font-semibold tracking-widest text-gold-deep/60">01</span>
+      </a>
+      <a href="about.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
+        <span class="text-2xl font-bold text-mauve-deep transition-colors group-hover:text-gold-deep" data-i18n="nav.about">من نحن</span>
+        <span class="text-xs font-semibold tracking-widest text-gold-deep/60">02</span>
+      </a>
+      <a href="services.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
+        <span class="text-2xl font-bold text-mauve-deep transition-colors group-hover:text-gold-deep" data-i18n="nav.services">الخدمات</span>
+        <span class="text-xs font-semibold tracking-widest text-gold-deep/60">03</span>
+      </a>
+      <a href="booking.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
+        <span class="text-2xl font-bold text-mauve-deep transition-colors group-hover:text-gold-deep" data-i18n="nav.booking">الحجز</span>
+        <span class="text-xs font-semibold tracking-widest text-gold-deep/60">04</span>
+      </a>
+      <a href="contact.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
+        <span class="text-2xl font-bold text-mauve-deep transition-colors group-hover:text-gold-deep" data-i18n="nav.contact">تواصل معنا</span>
+        <span class="text-xs font-semibold tracking-widest text-gold-deep/60">05</span>
+      </a>
+    </nav>
+    <div class="px-8 pb-10">
+      <a href="contact.html" class="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-bold text-mauve-ink" style="background: linear-gradient(115deg, #f7d997, #f4c871, #eeb44d); box-shadow: 0 14px 34px -10px rgba(207,157,69,0.7);">
+        <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        <span data-i18n="nav.contact">تواصل معنا</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="relative z-10">
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden pb-8 pt-32 sm:pt-36 lg:pb-10 lg:pt-40">
+      <div class="relative z-10 mx-auto max-w-7xl px-5 lg:px-10">
+        <div class="text-center">
+          <div class="anim-fade-up inline-flex items-center gap-2.5 rounded-full border border-gold-deep/35 bg-gold/[0.22] px-4 py-1.5 text-xs font-semibold tracking-wider text-mauve-deep mx-auto" data-delay="0">
+            <span class="relative flex size-2">
+              <span class="animate-ping-dot absolute inline-flex size-full rounded-full bg-gold-deep"></span>
+              <span class="relative inline-flex size-2 rounded-full bg-gold-deep"></span>
+            </span>
+            <span data-i18n="hero.badge">حجز إلكتروني</span>
+          </div>
+
+          <h1 class="anim-fade-up mx-auto mt-6 max-w-4xl text-3xl font-bold leading-[1.2] text-mauve-ink sm:text-4xl lg:text-[3.5rem]" data-delay="0.1">
+            <span data-i18n="hero.title">احجز موعدك</span>
+            <span class="text-gradient" data-i18n="hero.titleAccent">في دقيقة واحدة</span>
+          </h1>
+
+          <p class="anim-fade-up mx-auto mt-6 max-w-2xl text-sm leading-[1.9] text-mauve/75 sm:text-base" data-delay="0.2" data-i18n="hero.sub">
+            اختر الخدمة والوقت المناسب لك من خلال نظام الحجز الإلكتروني، وسيصلك تأكيد فوري على بريدك وواتساب.
+          </p>
+
+          <div class="anim-fade-up mt-8 inline-flex flex-wrap items-center justify-center gap-x-6 gap-y-3" data-delay="0.3">
+            <div class="flex items-center gap-2 text-sm font-semibold text-mauve-deep">
+              <svg class="size-4 text-gold-deep" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span data-i18n="hero.stat1">تأكيد فوري</span>
+            </div>
+            <span class="hidden h-5 w-px bg-mauve/15 sm:block"></span>
+            <div class="flex items-center gap-2 text-sm font-semibold text-mauve-deep">
+              <svg class="size-4 text-gold-deep" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span data-i18n="hero.stat2">حجز آمن ومشفر</span>
+            </div>
+            <span class="hidden h-5 w-px bg-mauve/15 sm:block"></span>
+            <div class="flex items-center gap-2 text-sm font-semibold text-mauve-deep">
+              <svg class="size-4 text-gold-deep" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span data-i18n="hero.stat3">إلغاء مجاني قبل 24 ساعة</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAL.COM EMBED -->
+    <section class="relative z-10 pb-16 sm:pb-20">
+      <div class="mx-auto max-w-7xl px-5 lg:px-10">
+        <div class="anim-scale-in tilt-3d relative rounded-[1.8rem] p-px" data-delay="0.1" data-cursor-label="احجز" style="background: linear-gradient(to bottom, rgba(244,200,113,0.6), rgba(108,88,98,0.1), transparent); box-shadow: 0 40px 90px -40px rgba(78,61,71,0.45);">
+          <div class="tilt-inner-deep cal-wrap">
+
+            <!-- Cal Loading overlay -->
+            <div class="cal-loading" id="cal-loading">
+              <div class="cal-loading-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <p data-i18n="cal.loading">جاري تحميل نظام الحجز...</p>
+            </div>
+
+            <!-- Cal inline container (as provided) -->
+            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-me"></div>
+          </div>
+        </div>
+
+        <!-- Side actions -->
+        <div class="anim-fade-up mt-6 flex flex-wrap items-center justify-center gap-3" data-delay="0.2">
+          <a href="https://wa.me/9647800006964?text=مرحباً،%20أريد%20حجز%20موعد" target="_blank" rel="noopener" class="shine relative inline-flex items-center gap-2.5 overflow-hidden rounded-full border border-mauve/20 bg-white/80 px-6 py-3.5 text-sm font-bold text-mauve-deep backdrop-blur-md transition-all duration-300 hover:border-gold-deep/60 hover:text-gold-deep magnetic" data-cursor-label="واتساب">
+            <svg class="size-5 text-gold-deep" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span data-i18n="cal.whatsapp">الحجز عبر واتساب</span>
+          </a>
+
+          <a href="tel:+9647800006964" class="shine relative inline-flex items-center gap-2.5 overflow-hidden rounded-full border border-mauve/20 bg-white/80 px-6 py-3.5 text-sm font-bold text-mauve-deep backdrop-blur-md transition-all duration-300 hover:border-gold-deep/60 hover:text-gold-deep magnetic" data-cursor-label="اتصل">
+            <svg class="size-5 text-gold-deep" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span data-i18n="cal.call">اتصل بنا</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY BOOK WITH US -->
+    <section class="relative z-10 pb-16 sm:pb-20">
+      <div class="mx-auto max-w-7xl px-5 lg:px-10">
+        <div class="anim-fade-up mb-8 text-center" data-delay="0">
+          <h2 class="text-2xl font-bold leading-[1.3] text-mauve-ink sm:text-3xl">
+            <span data-i18n="why.title">لماذا الحجز معنا؟</span>
+          </h2>
+          <p class="mt-3 mx-auto max-w-xl text-sm text-mauve/70 sm:text-base" data-i18n="why.sub">
+            نظام حجز سريع وآمن يوفر عليك الوقت والجهد.
+          </p>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-3">
+          <div class="tilt-3d anim-fade-up group rounded-2xl border border-mauve/12 bg-white/85 p-6 text-center shadow-[0_20px_50px_-35px_rgba(78,61,71,0.35)]" data-delay="0.1" data-cursor-label="ميزة">
+            <div class="tilt-inner-deep mx-auto flex size-14 items-center justify-center rounded-2xl border border-gold-deep/30 bg-gold/25 text-gold-deep transition-all duration-500 group-hover:scale-110 group-hover:bg-gold/40">
+              <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="tilt-inner mt-4 text-base font-bold text-mauve-ink" data-i18n="why.1.title">حجز في دقيقة</h3>
+            <p class="tilt-inner mt-2 text-xs leading-relaxed text-mauve/65" data-i18n="why.1.desc">واجهة بسيطة تتيح لك اختيار الخدمة والوقت بسهولة.</p>
+          </div>
+
+          <div class="tilt-3d anim-fade-up group rounded-2xl border border-mauve/12 bg-white/85 p-6 text-center shadow-[0_20px_50px_-35px_rgba(78,61,71,0.35)]" data-delay="0.2" data-cursor-label="ميزة">
+            <div class="tilt-inner-deep mx-auto flex size-14 items-center justify-center rounded-2xl border border-gold-deep/30 bg-gold/25 text-gold-deep transition-all duration-500 group-hover:scale-110 group-hover:bg-gold/40">
+              <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <h3 class="tilt-inner mt-4 text-base font-bold text-mauve-ink" data-i18n="why.2.title">آمن ومشفر</h3>
+            <p class="tilt-inner mt-2 text-xs leading-relaxed text-mauve/65" data-i18n="why.2.desc">بياناتك محمية بالكامل ولا تُشارك مع أي طرف ثالث.</p>
+          </div>
+
+          <div class="tilt-3d anim-fade-up group rounded-2xl border border-mauve/12 bg-white/85 p-6 text-center shadow-[0_20px_50px_-35px_rgba(78,61,71,0.35)]" data-delay="0.3" data-cursor-label="ميزة">
+            <div class="tilt-inner-deep mx-auto flex size-14 items-center justify-center rounded-2xl border border-gold-deep/30 bg-gold/25 text-gold-deep transition-all duration-500 group-hover:scale-110 group-hover:bg-gold/40">
+              <svg class="size-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3 class="tilt-inner mt-4 text-base font-bold text-mauve-ink" data-i18n="why.3.title">تأكيد فوري</h3>
+            <p class="tilt-inner mt-2 text-xs leading-relaxed text-mauve/65" data-i18n="why.3.desc">يصلك تأكيد الحجز فوراً عبر البريد وواتساب.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="relative z-10 overflow-hidden text-lilac" style="background: linear-gradient(180deg, #46343e, #372931);">
+    <span class="absolute inset-x-0 top-0 h-[2px]" style="background: linear-gradient(to left, transparent, #f4c871, transparent);"></span>
+    <div class="bg-dots-gold pointer-events-none absolute inset-0 opacity-40"></div>
+
+    <div class="relative mx-auto max-w-7xl px-5 lg:px-10 py-12">
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+
+        <div>
+          <a href="index.html" class="flex items-center gap-3 magnetic" data-cursor-label="الرئيسية">
+            <span class="animate-wiggle-soft flex size-11 items-center justify-center rounded-xl bg-gold/[0.14] ring-1 ring-gold/35 overflow-hidden">
+              <img src="logo.png" alt="Logo" class="size-7 object-contain" />
+            </span>
+            <span class="leading-tight">
+              <span class="block text-sm font-bold text-white" data-i18n="brand.name">د. زيد شاكر</span>
+              <span class="block text-[8px] font-semibold tracking-[0.2em] text-gold/90">ADVANCED CARE</span>
+            </span>
+          </a>
+          <p class="mt-4 max-w-sm text-xs leading-[1.8] text-lilac/80" data-i18n="footer.about">
+            عيادة الدكتور زيد شاكر لجراحة التجميل والترميم والرعاية الطبية المتقدمة.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold tracking-wider text-white" data-i18n="footer.quickLinks">روابط سريعة</h4>
+          <ul class="mt-4 space-y-2.5">
+            <li><a href="index.html" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.home">الرئيسية</span></a></li>
+            <li><a href="about.html" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.about">من نحن</span></a></li>
+            <li><a href="services.html" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.services">الخدمات</span></a></li>
+            <li><a href="contact.html" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.contact">تواصل معنا</span></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="flex items-center gap-2 text-xs font-bold tracking-wider text-white">
+            <svg class="size-3.5 text-gold" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span data-i18n="footer.hours">أوقات العمل</span>
+          </h4>
+          <ul class="mt-4 space-y-2.5 text-xs">
+            <li class="flex items-center justify-between gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-3 py-2.5">
+              <span class="text-lilac/85" data-i18n="hours.weekdays">السبت — الخميس</span>
+              <span class="font-bold text-gold" dir="ltr">3PM — 9PM</span>
+            </li>
+            <li class="flex items-center justify-between gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-3 py-2.5">
+              <span class="text-lilac/85" data-i18n="hours.friday">الجمعة</span>
+              <span class="font-bold text-gold" dir="ltr">10AM — 9PM</span>
+            </li>
+            <li class="flex items-center justify-between gap-2 rounded-xl border border-white/10 bg-white/[0.05] px-3 py-2.5">
+              <span class="text-lilac/85" data-i18n="hours.sunday">الأحد</span>
+              <span class="font-bold text-rose-300/90" data-i18n="hours.off">عطلة</span>
+            </li>
+            <li class="flex items-center justify-between gap-2 rounded-xl border border-gold/30 bg-gold/[0.1] px-3 py-2.5">
+              <span class="text-white" data-i18n="hours.online">الحجز الإلكتروني</span>
+              <span class="font-bold text-gold">24/7</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold tracking-wider text-white" data-i18n="footer.contact">معلومات الاتصال</h4>
+          <ul class="mt-4 space-y-3 text-xs">
+            <li>
+              <a href="tel:+9647800006964" class="group flex items-center gap-3 magnetic" data-cursor-label="اتصل">
+                <span class="flex size-9 shrink-0 items-center justify-center rounded-xl border border-white/12 bg-white/[0.06] text-gold transition-all duration-300 group-hover:border-gold/50 group-hover:bg-gold/[0.12]">
+                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span dir="ltr" class="font-semibold text-lilac/85 transition-colors group-hover:text-white">+964 780 000 6964</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:info@zaidshakir.com" class="group flex items-center gap-3 magnetic" data-cursor-label="إيميل">
+                <span class="flex size-9 shrink-0 items-center justify-center rounded-xl border border-white/12 bg-white/[0.06] text-gold transition-all duration-300 group-hover:border-gold/50 group-hover:bg-gold/[0.12]">
+                  <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </span>
+                <span dir="ltr" class="font-semibold text-lilac/85 transition-colors group-hover:text-white">info@zaidshakir.com</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6 text-[10px] text-lilac/55">
+        <p data-i18n="footer.rights">جميع الحقوق محفوظة © 2026 عيادة الدكتور زيد شاكر.</p>
+        <div class="flex gap-5">
+          <a href="#" class="transition-colors hover:text-gold" data-i18n="footer.privacy">سياسة الخصوصية</a>
+          <a href="#" class="transition-colors hover:text-gold" data-i18n="footer.terms">الشروط والأحكام</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================== -->
+  <!-- CAL.COM INLINE EMBED (as provided)                   -->
+  <!-- ====================================================== -->
+  <script type="text/javascript">
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "me", { origin: "https://app.cal.com" });
+    Cal.config = Cal.config || {};
+    Cal.config.forwardQueryParams = true;
+
+    Cal.ns.me("inline", {
+      elementOrSelector: "#my-cal-inline-me",
+      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true", theme: "light" },
+      calLink: "younis-akram-kzwl1w/me",
+    });
+
+    Cal.ns.me("ui", {
+      theme: "light",
+      cssVarsPerTheme: {
+        light: { "cal-brand": "#6c5862" },
+        dark: { "cal-brand": "#f4c871" }
+      },
+      hideEventTypeDetails: false,
+      layout: "month_view"
+    });
+  </script>
+
+  <!-- MAIN SCRIPT -->
+  <script>
+    (function() {
+      'use strict';
+
+      const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ============ TRANSLATIONS ============
+      const translations = {
+        ar: {
+          'brand.name': 'د. زيد شاكر',
+          'nav.home': 'الرئيسية',
+          'nav.about': 'من نحن',
+          'nav.services': 'الخدمات',
+          'nav.booking': 'الحجز',
+          'nav.contact': 'تواصل معنا',
+
+          'hero.badge': 'حجز إلكتروني',
+          'hero.title': 'احجز موعدك',
+          'hero.titleAccent': 'في دقيقة واحدة',
+          'hero.sub': 'اختر الخدمة والوقت المناسب لك من خلال نظام الحجز الإلكتروني، وسيصلك تأكيد فوري على بريدك وواتساب.',
+          'hero.stat1': 'تأكيد فوري',
+          'hero.stat2': 'حجز آمن ومشفر',
+          'hero.stat3': 'إلغاء مجاني قبل 24 ساعة',
+
+          'cal.loading': 'جاري تحميل نظام الحجز...',
+          'cal.whatsapp': 'الحجز عبر واتساب',
+          'cal.call': 'اتصل بنا',
+
+          'why.title': 'لماذا الحجز معنا؟',
+          'why.sub': 'نظام حجز سريع وآمن يوفر عليك الوقت والجهد.',
+          'why.1.title': 'حجز في دقيقة',
+          'why.1.desc': 'واجهة بسيطة تتيح لك اختيار الخدمة والوقت بسهولة.',
+          'why.2.title': 'آمن ومشفر',
+          'why.2.desc': 'بياناتك محمية بالكامل ولا تُشارك مع أي طرف ثالث.',
+          'why.3.title': 'تأكيد فوري',
+          'why.3.desc': 'يصلك تأكيد الحجز فوراً عبر البريد وواتساب.',
+
+          'status.open': 'مفتوح الآن',
+          'status.closed': 'مغلق حالياً',
+
+          'hours.weekdays': 'السبت — الخميس',
+          'hours.friday': 'الجمعة',
+          'hours.sunday': 'الأحد',
+          'hours.off': 'عطلة',
+          'hours.online': 'الحجز الإلكتروني',
+
+          'footer.about': 'عيادة الدكتور زيد شاكر لجراحة التجميل والترميم والرعاية الطبية المتقدمة.',
+          'footer.quickLinks': 'روابط سريعة',
+          'footer.hours': 'أوقات العمل',
+          'footer.contact': 'معلومات الاتصال',
+          'footer.rights': 'جميع الحقوق محفوظة © 2026 عيادة الدكتور زيد شاكر.',
+          'footer.privacy': 'سياسة الخصوصية',
+          'footer.terms': 'الشروط والأحكام',
+
+          'page.title': 'حجز موعد | عيادة د. زيد شاكر'
+        },
+        en: {
+          'brand.name': 'Dr. Zaid Shakir',
+          'nav.home': 'Home',
+          'nav.about': 'About Us',
+          'nav.services': 'Services',
+          'nav.booking': 'Booking',
+          'nav.contact': 'Contact Us',
+
+          'hero.badge': 'Online Booking',
+          'hero.title': 'Book Your Appointment',
+          'hero.titleAccent': 'In One Minute',
+          'hero.sub': 'Choose the service and time that suits you through our online booking system, and receive instant confirmation on email and WhatsApp.',
+          'hero.stat1': 'Instant Confirmation',
+          'hero.stat2': 'Secure & Encrypted',
+          'hero.stat3': 'Free Cancellation 24h Before',
+
+          'cal.loading': 'Loading booking system...',
+          'cal.whatsapp': 'Book via WhatsApp',
+          'cal.call': 'Call Us',
+
+          'why.title': 'Why Book With Us?',
+          'why.sub': 'A fast and secure booking system that saves you time.',
+          'why.1.title': 'Book in a Minute',
+          'why.1.desc': 'A simple interface to pick the service and time easily.',
+          'why.2.title': 'Secure & Encrypted',
+          'why.2.desc': 'Your data is fully protected and never shared.',
+          'why.3.title': 'Instant Confirmation',
+          'why.3.desc': 'Receive your confirmation instantly via email and WhatsApp.',
+
+          'status.open': 'Open Now',
+          'status.closed': 'Closed',
+
+          'hours.weekdays': 'Saturday — Thursday',
+          'hours.friday': 'Friday',
+          'hours.sunday': 'Sunday',
+          'hours.off': 'Closed',
+          'hours.online': 'Online Booking',
+
+          'footer.about': 'Dr. Zaid Shakir Clinic for Plastic & Reconstructive Surgery and Advanced Medical Care.',
+          'footer.quickLinks': 'Quick Links',
+          'footer.hours': 'Working Hours',
+          'footer.contact': 'Contact Info',
+          'footer.rights': 'All rights reserved © 2026 Dr. Zaid Shakir Clinic.',
+          'footer.privacy': 'Privacy Policy',
+          'footer.terms': 'Terms & Conditions',
+
+          'page.title': 'Booking | Dr. Zaid Shakir Clinic'
+        }
+      };
+
+      let currentLang = 'ar';
+
+      function applyTranslation(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        document.title = t['page.title'];
+
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+          const key = el.getAttribute('data-i18n');
+          if (t[key]) el.textContent = t[key];
         });
-    </script>
 
+        const langEnBtn = document.getElementById('lang-en');
+        const langArBtn = document.getElementById('lang-ar');
+
+        if (lang === 'ar') {
+          langArBtn.style.background = 'linear-gradient(90deg, #f4c871, #eeb44d)';
+          langArBtn.style.boxShadow = '0 4px 14px -4px rgba(207,157,69,0.7)';
+          langArBtn.classList.add('text-mauve-ink');
+          langArBtn.classList.remove('text-mauve/60');
+          langEnBtn.style.background = 'transparent';
+          langEnBtn.style.boxShadow = 'none';
+          langEnBtn.classList.remove('text-mauve-ink');
+          langEnBtn.classList.add('text-mauve/60');
+        } else {
+          langEnBtn.style.background = 'linear-gradient(90deg, #f4c871, #eeb44d)';
+          langEnBtn.style.boxShadow = '0 4px 14px -4px rgba(207,157,69,0.7)';
+          langEnBtn.classList.add('text-mauve-ink');
+          langEnBtn.classList.remove('text-mauve/60');
+          langArBtn.style.background = 'transparent';
+          langArBtn.style.boxShadow = 'none';
+          langArBtn.classList.remove('text-mauve-ink');
+          langArBtn.classList.add('text-mauve/60');
+        }
+
+        updateLiveStatus();
+      }
+
+      document.getElementById('lang-en').addEventListener('click', function() { applyTranslation('en'); });
+      document.getElementById('lang-ar').addEventListener('click', function() { applyTranslation('ar'); });
+
+      // ============ IRAQ TIME + WORK SCHEDULE ============
+      function getIraqTime() {
+        const now = new Date();
+        const iraq = new Date(now.getTime() + (3 * 60 + now.getTimezoneOffset()) * 60000);
+        return {
+          day: iraq.getDay(),
+          minutes: iraq.getHours() * 60 + iraq.getMinutes()
+        };
+      }
+
+      function getWorkSchedule() {
+        const { day, minutes } = getIraqTime();
+        const CLOSE = 21 * 60;
+
+        if (day === 0) {
+          return { isOpen: false, text: 'مغلق حالياً', schedule: 'الأحد: عطلة' };
+        }
+
+        if (day === 5) {
+          const openMin = 10 * 60;
+          const isOpen = minutes >= openMin && minutes < CLOSE;
+          return { isOpen: isOpen, text: isOpen ? 'مفتوح الآن' : 'مغلق حالياً', schedule: 'الجمعة: 10:00 ص — 9:00 م' };
+        }
+
+        const openMin = 15 * 60;
+        const isOpen = minutes >= openMin && minutes < CLOSE;
+        return { isOpen: isOpen, text: isOpen ? 'مفتوح الآن' : 'مغلق حالياً', schedule: '3:00 م — 9:00 م' };
+      }
+
+      function updateLiveStatus() {
+        const pill = document.getElementById('live-status-pill');
+        const textEl = document.getElementById('live-status-text');
+        if (!pill || !textEl) return;
+
+        const status = getWorkSchedule();
+        const t = translations[currentLang];
+        pill.classList.remove('open', 'closed');
+
+        if (status.isOpen) {
+          pill.classList.add('open');
+          textEl.textContent = t['status.open'];
+          pill.setAttribute('title', status.schedule || '');
+        } else {
+          pill.classList.add('closed');
+          textEl.textContent = t['status.closed'];
+          pill.setAttribute('title', status.schedule || '');
+        }
+      }
+
+      setInterval(updateLiveStatus, 60000);
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) updateLiveStatus();
+      });
+
+      // ============ LOADING ============
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loadingScreen = document.getElementById('loading-screen');
+          if (loadingScreen) loadingScreen.classList.add('hidden');
+
+          const header = document.getElementById('main-header');
+          if (header) {
+            header.style.transition = 'transform 0.9s cubic-bezier(0.22,1,0.36,1), opacity 0.9s ease';
+            header.style.transform = 'translateY(0)';
+            header.style.opacity = '1';
+          }
+
+          setTimeout(function() {
+            if (loadingScreen) loadingScreen.style.display = 'none';
+          }, 1000);
+
+          setTimeout(triggerVisibleAnimations, 100);
+          updateLiveStatus();
+        }, 3000);
+      });
+
+      // Hide cal loading overlay after Cal renders
+      (function waitForCal() {
+        let tries = 0;
+        const maxTries = 40; // ~20s
+        const interval = setInterval(function() {
+          tries++;
+          const calContainer = document.getElementById('my-cal-inline-me');
+          const loadingOverlay = document.getElementById('cal-loading');
+          const hasCalIframe = calContainer && calContainer.querySelector('iframe');
+          if (hasCalIframe || tries >= maxTries) {
+            if (loadingOverlay) loadingOverlay.classList.add('hidden');
+            clearInterval(interval);
+          }
+        }, 500);
+      })();
+
+      // ============ TILT ============
+      function initTiltCards() {
+        document.querySelectorAll('.tilt-3d').forEach(function(card) {
+          if (card.dataset.tiltInit === 'true') return;
+          card.dataset.tiltInit = 'true';
+
+          const state = {
+            el: card, rect: null,
+            targetRotX: 0, targetRotY: 0, currentRotX: 0, currentRotY: 0,
+            targetLift: 0, currentLift: 0, targetScale: 1, currentScale: 1,
+            targetGlow: 0, currentGlow: 0, glowX: 50, glowY: 50,
+            targetGlowX: 50, targetGlowY: 50, hovered: false, rafId: null
+          };
+
+          card.addEventListener('mouseenter', function() {
+            state.hovered = true;
+            state.rect = card.getBoundingClientRect();
+            state.targetLift = -12;
+            state.targetScale = 1.02;
+            state.targetGlow = 1;
+            card.classList.add('tilting');
+            if (!state.rafId) animateCard(state);
+          });
+
+          card.addEventListener('mousemove', function(e) {
+            if (!state.rect) state.rect = card.getBoundingClientRect();
+            const x = e.clientX - state.rect.left;
+            const y = e.clientY - state.rect.top;
+            const nx = (x / state.rect.width) - 0.5;
+            const ny = (y / state.rect.height) - 0.5;
+            state.targetRotY = nx * 8;
+            state.targetRotX = -ny * 8;
+            state.targetGlowX = (x / state.rect.width) * 100;
+            state.targetGlowY = (y / state.rect.height) * 100;
+          });
+
+          card.addEventListener('mouseleave', function() {
+            state.hovered = false;
+            state.targetRotX = 0; state.targetRotY = 0;
+            state.targetLift = 0; state.targetScale = 1;
+            state.targetGlow = 0;
+            state.targetGlowX = 50; state.targetGlowY = 50;
+          });
+        });
+      }
+
+      function animateCard(state) {
+        const lerp = 0.12, glowLerp = 0.15;
+        state.currentRotX += (state.targetRotX - state.currentRotX) * lerp;
+        state.currentRotY += (state.targetRotY - state.currentRotY) * lerp;
+        state.currentLift += (state.targetLift - state.currentLift) * lerp;
+        state.currentScale += (state.targetScale - state.currentScale) * lerp;
+        state.currentGlow += (state.targetGlow - state.currentGlow) * glowLerp;
+        state.glowX += (state.targetGlowX - state.glowX) * glowLerp;
+        state.glowY += (state.targetGlowY - state.glowY) * glowLerp;
+
+        state.el.style.setProperty('--tilt-rotate-x', state.currentRotX.toFixed(2) + 'deg');
+        state.el.style.setProperty('--tilt-rotate-y', state.currentRotY.toFixed(2) + 'deg');
+        state.el.style.setProperty('--tilt-lift', state.currentLift.toFixed(2) + 'px');
+        state.el.style.setProperty('--tilt-scale', state.currentScale.toFixed(3));
+        state.el.style.setProperty('--tilt-glow-x', state.glowX.toFixed(1) + '%');
+        state.el.style.setProperty('--tilt-glow-y', state.glowY.toFixed(1) + '%');
+        state.el.style.setProperty('--tilt-glow-opacity', state.currentGlow.toFixed(2));
+
+        const rotXDone = Math.abs(state.targetRotX - state.currentRotX) < 0.1;
+        const rotYDone = Math.abs(state.targetRotY - state.currentRotY) < 0.1;
+        const liftDone = Math.abs(state.targetLift - state.currentLift) < 0.1;
+        const scaleDone = Math.abs(state.targetScale - state.currentScale) < 0.001;
+        const glowDone = Math.abs(state.targetGlow - state.currentGlow) < 0.01;
+
+        if (state.hovered || !rotXDone || !rotYDone || !liftDone || !scaleDone || !glowDone) {
+          state.rafId = requestAnimationFrame(function() { animateCard(state); });
+        } else {
+          state.rafId = null;
+          state.el.classList.remove('tilting');
+        }
+      }
+
+      initTiltCards();
+      setTimeout(initTiltCards, 500);
+
+      document.addEventListener('mousemove', function(e) {
+        document.querySelectorAll('.glow-btn').forEach(function(el) {
+          const rect = el.getBoundingClientRect();
+          el.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+          el.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+        });
+      }, { passive: true });
+
+      // ============ CURSOR ============
+      if (isFinePointer && !prefersReducedMotion) {
+        const cursorDot = document.getElementById('cursor-dot');
+        const cursorRing = document.getElementById('cursor-ring');
+        const glowOrb = document.getElementById('glow-orb');
+        const hoverLabel = document.getElementById('hover-label');
+
+        let mouseX = -100, mouseY = -100;
+        let dotX = -100, dotY = -100;
+        let ringX = -100, ringY = -100;
+        let orbX = -100, orbY = -100;
+        let lastTrailTime = 0;
+
+        document.addEventListener('pointermove', function(e) {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+        }, { passive: true });
+
+        document.addEventListener('pointerleave', function() {
+          cursorDot.style.opacity = '0';
+          cursorRing.style.opacity = '0';
+          glowOrb.style.opacity = '0';
+        });
+
+        document.addEventListener('pointerenter', function() {
+          cursorDot.style.opacity = '1';
+          cursorRing.style.opacity = '1';
+          glowOrb.style.opacity = '1';
+        });
+
+        function animateCursor() {
+          dotX += (mouseX - dotX) * 0.5;
+          dotY += (mouseY - dotY) * 0.5;
+          ringX += (mouseX - ringX) * 0.18;
+          ringY += (mouseY - ringY) * 0.18;
+          orbX += (mouseX - orbX) * 0.08;
+          orbY += (mouseY - orbY) * 0.08;
+
+          cursorDot.style.left = dotX + 'px';
+          cursorDot.style.top = dotY + 'px';
+          cursorRing.style.left = ringX + 'px';
+          cursorRing.style.top = ringY + 'px';
+          glowOrb.style.left = orbX + 'px';
+          glowOrb.style.top = orbY + 'px';
+
+          const now = performance.now();
+          if (now - lastTrailTime > 45) {
+            lastTrailTime = now;
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trail.style.left = mouseX + 'px';
+            trail.style.top = mouseY + 'px';
+            document.body.appendChild(trail);
+            setTimeout(() => trail.remove(), 800);
+          }
+
+          requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        const interactiveSelector = 'button, a, input, textarea, [data-cursor-label], .magnetic';
+
+        document.addEventListener('mouseover', function(e) {
+          const target = e.target.closest(interactiveSelector);
+          if (target) {
+            cursorRing.classList.add('hover');
+            cursorDot.classList.add('hover');
+            const label = target.getAttribute('data-cursor-label');
+            if (label) {
+              hoverLabel.textContent = label;
+              hoverLabel.classList.add('active');
+            }
+          }
+        });
+
+        document.addEventListener('mouseout', function(e) {
+          const target = e.target.closest(interactiveSelector);
+          if (target) {
+            cursorRing.classList.remove('hover');
+            cursorDot.classList.remove('hover');
+            hoverLabel.classList.remove('active');
+          }
+        });
+
+        document.addEventListener('click', function(e) {
+          cursorRing.classList.add('click');
+          setTimeout(() => cursorRing.classList.remove('click'), 200);
+        });
+      }
+
+      // ============ MAGNETIC ============
+      if (isFinePointer && !prefersReducedMotion) {
+        document.querySelectorAll('.magnetic').forEach(el => {
+          let rafId = null;
+          let targetX = 0, targetY = 0;
+          let currentX = 0, currentY = 0;
+
+          el.addEventListener('mousemove', function(e) {
+            const rect = el.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            targetX = (e.clientX - centerX) * 0.25;
+            targetY = (e.clientY - centerY) * 0.25;
+
+            if (!rafId) {
+              const animate = () => {
+                currentX += (targetX - currentX) * 0.2;
+                currentY += (targetY - currentY) * 0.2;
+                el.style.transform = `translate(${currentX}px, ${currentY}px)`;
+                if (Math.abs(currentX - targetX) > 0.1 || Math.abs(currentY - targetY) > 0.1) {
+                  rafId = requestAnimationFrame(animate);
+                } else {
+                  rafId = null;
+                }
+              };
+              rafId = requestAnimationFrame(animate);
+            }
+          });
+
+          el.addEventListener('mouseleave', function() {
+            targetX = 0; targetY = 0;
+            if (!rafId) {
+              const animate = () => {
+                currentX += (targetX - currentX) * 0.2;
+                currentY += (targetY - currentY) * 0.2;
+                el.style.transform = `translate(${currentX}px, ${currentY}px)`;
+                if (Math.abs(currentX) > 0.1 || Math.abs(currentY) > 0.1) {
+                  rafId = requestAnimationFrame(animate);
+                } else {
+                  el.style.transform = '';
+                  rafId = null;
+                }
+              };
+              rafId = requestAnimationFrame(animate);
+            }
+          });
+        });
+      }
+
+      // ============ SCROLL PROGRESS + HEADER ============
+      const progressBar = document.getElementById('scroll-progress');
+      const headerInner = document.getElementById('header-inner');
+      let isScrolled = false;
+
+      function onScroll() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? scrollTop / docHeight : 0;
+        progressBar.style.transform = 'scaleX(' + progress + ')';
+
+        const shouldScroll = scrollTop > 30;
+        if (shouldScroll !== isScrolled) {
+          isScrolled = shouldScroll;
+          if (isScrolled) {
+            headerInner.className = 'mx-auto flex items-center justify-between gap-4 px-5 transition-all duration-500 lg:px-10 glass-strong mt-2 max-w-6xl rounded-2xl py-2.5 lg:mt-3';
+          } else {
+            headerInner.className = 'mx-auto flex items-center justify-between gap-4 px-5 transition-all duration-500 lg:px-10 max-w-7xl bg-transparent py-5';
+          }
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // ============ MOBILE MENU ============
+      const mobileMenu = document.getElementById('mobile-menu');
+      document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        mobileMenu.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        const links = mobileMenu.querySelectorAll('.mobile-nav-link');
+        links.forEach(function(link, i) {
+          setTimeout(function() {
+            link.style.transition = 'opacity 0.5s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1)';
+            link.style.opacity = '1';
+            link.style.transform = 'translateX(0)';
+          }, 100 + i * 70);
+        });
+      });
+      function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+        const links = mobileMenu.querySelectorAll('.mobile-nav-link');
+        links.forEach(function(link) {
+          link.style.opacity = '0';
+          link.style.transform = 'translateX(40px)';
+        });
+      }
+      document.getElementById('mobile-menu-close').addEventListener('click', closeMobileMenu);
+      mobileMenu.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', closeMobileMenu);
+      });
+
+      // ============ SCROLL ANIMATIONS ============
+      function triggerVisibleAnimations() {
+        const animElements = document.querySelectorAll('.anim-fade-up, .anim-scale-in');
+        animElements.forEach(function(el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 70) {
+            const delay = parseFloat(el.dataset.delay || 0);
+            setTimeout(function() {
+              el.classList.add('visible');
+            }, delay * 1000);
+          }
+        });
+      }
+      const animObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            const delay = parseFloat(entry.target.dataset.delay || 0);
+            setTimeout(function() {
+              entry.target.classList.add('visible');
+            }, delay * 1000);
+            animObserver.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '-70px' });
+      document.querySelectorAll('.anim-fade-up, .anim-scale-in').forEach(function(el) {
+        animObserver.observe(el);
+      });
+
+      // ============ BACKGROUND CANVAS ============
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
+      let w = 0, h = 0;
+      let pts = [];
+      const mouse = { x: -9999, y: -9999 };
+      const LINK = 130;
+      let isCanvasVisible = true;
+
+      function resizeCanvas() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = window.innerWidth; h = window.innerHeight;
+        canvas.width = w * dpr; canvas.height = h * dpr;
+        canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const count = Math.min(80, Math.floor((w * h) / 22000));
+        pts = [];
+        for (let i = 0; i < count; i++) {
+          pts.push({
+            x: Math.random() * w, y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+            r: Math.random() * 1.5 + 0.5
+          });
+        }
+      }
+
+      function tickCanvas() {
+        if (!isCanvasVisible) { requestAnimationFrame(tickCanvas); return; }
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < pts.length; i++) {
+          const p = pts[i];
+          const dxm = p.x - mouse.x, dym = p.y - mouse.y;
+          const dm = Math.sqrt(dxm * dxm + dym * dym);
+          if (dm < 150 && dm > 0.01) {
+            const f = ((150 - dm) / 150) * 0.35;
+            p.vx += (dxm / dm) * f * 0.06;
+            p.vy += (dym / dm) * f * 0.06;
+          }
+          p.x += p.vx; p.y += p.vy;
+          p.vx *= 0.995; p.vy *= 0.995;
+          if (Math.abs(p.vx) < 0.05) p.vx += (Math.random() - 0.5) * 0.02;
+          if (Math.abs(p.vy) < 0.05) p.vy += (Math.random() - 0.5) * 0.02;
+          if (p.x < -20) p.x = w + 20;
+          if (p.x > w + 20) p.x = -20;
+          if (p.y < -20) p.y = h + 20;
+          if (p.y > h + 20) p.y = -20;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(108, 88, 98, 0.26)';
+          ctx.fill();
+        }
+        for (let a = 0; a < pts.length; a++) {
+          for (let b = a + 1; b < pts.length; b++) {
+            const pa = pts[a], pb = pts[b];
+            const dx = pa.x - pb.x, dy = pa.y - pb.y;
+            const d2 = dx * dx + dy * dy;
+            if (d2 < LINK * LINK) {
+              const alpha = (1 - Math.sqrt(d2) / LINK) * 0.2;
+              ctx.beginPath();
+              ctx.moveTo(pa.x, pa.y);
+              ctx.lineTo(pb.x, pb.y);
+              ctx.strokeStyle = 'rgba(207, 157, 69, ' + alpha + ')';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(tickCanvas);
+      }
+
+      window.addEventListener('pointermove', function(e) {
+        mouse.x = e.clientX; mouse.y = e.clientY;
+      }, { passive: true });
+      window.addEventListener('pointerleave', function() {
+        mouse.x = -9999; mouse.y = -9999;
+      });
+      window.addEventListener('resize', resizeCanvas);
+      document.addEventListener('visibilitychange', function() {
+        isCanvasVisible = !document.hidden;
+      });
+      resizeCanvas();
+      tickCanvas();
+
+      // ============ FAB / BOOKING ACTIONS ============
+      const fab = document.getElementById('fab-book');
+      if (fab) {
+        fab.addEventListener('click', function() {
+          document.getElementById('my-cal-inline-me')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      }
+
+    })();
+  </script>
 </body>
 </html>
