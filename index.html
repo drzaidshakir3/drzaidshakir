@@ -393,18 +393,16 @@
     @media (max-width: 640px) {
       .cal-wrap { min-height: 900px; }
     }
-    /* Cal embed wrapper height (فقط داخل الحاوية) */
-    .cal-wrap #my-cal-inline-me {
+    .cal-wrap #my-cal-inline-booking {
       width: 100% !important;
       height: 720px !important;
       overflow: auto;
       background: #fffdf9;
     }
     @media (max-width: 640px) {
-      .cal-wrap #my-cal-inline-me { height: 900px !important; }
+      .cal-wrap #my-cal-inline-booking { height: 900px !important; }
     }
 
-    /* Cal loading shimmer */
     .cal-loading {
       position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
@@ -619,7 +617,6 @@
         <div class="anim-scale-in tilt-3d relative rounded-[1.8rem] p-px" data-delay="0.1" data-cursor-label="احجز" style="background: linear-gradient(to bottom, rgba(244,200,113,0.6), rgba(108,88,98,0.1), transparent); box-shadow: 0 40px 90px -40px rgba(78,61,71,0.45);">
           <div class="tilt-inner-deep cal-wrap">
 
-            <!-- Cal Loading overlay -->
             <div class="cal-loading" id="cal-loading">
               <div class="cal-loading-dots">
                 <span></span><span></span><span></span>
@@ -628,7 +625,7 @@
             </div>
 
             <!-- Cal inline container (as provided) -->
-            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-me"></div>
+            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-booking"></div>
           </div>
         </div>
 
@@ -783,7 +780,7 @@
   </footer>
 
   <!-- ====================================================== -->
-  <!-- CAL.COM INLINE EMBED (as provided)                   -->
+  <!-- CAL.COM INLINE EMBED (new: booking)                  -->
   <!-- ====================================================== -->
   <script type="text/javascript">
     (function (C, A, L) {
@@ -812,22 +809,18 @@
         p(cal, ar);
       };
     })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", "me", { origin: "https://app.cal.com" });
+
+    Cal("init", "booking", { origin: "https://app.cal.com" });
     Cal.config = Cal.config || {};
     Cal.config.forwardQueryParams = true;
 
-    Cal.ns.me("inline", {
-      elementOrSelector: "#my-cal-inline-me",
-      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true", theme: "light" },
-      calLink: "younis-akram-kzwl1w/me",
+    Cal.ns.booking("inline", {
+      elementOrSelector: "#my-cal-inline-booking",
+      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
+      calLink: "zaid-shakir-iin6pv/booking",
     });
 
-    Cal.ns.me("ui", {
-      theme: "light",
-      cssVarsPerTheme: {
-        light: { "cal-brand": "#6c5862" },
-        dark: { "cal-brand": "#f4c871" }
-      },
+    Cal.ns.booking("ui", {
       hideEventTypeDetails: false,
       layout: "month_view"
     });
@@ -841,7 +834,6 @@
       const isFinePointer = window.matchMedia('(pointer: fine)').matches;
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // ============ TRANSLATIONS ============
       const translations = {
         ar: {
           'brand.name': 'د. زيد شاكر',
@@ -1064,10 +1056,10 @@
       // Hide cal loading overlay after Cal renders
       (function waitForCal() {
         let tries = 0;
-        const maxTries = 40; // ~20s
+        const maxTries = 40;
         const interval = setInterval(function() {
           tries++;
-          const calContainer = document.getElementById('my-cal-inline-me');
+          const calContainer = document.getElementById('my-cal-inline-booking');
           const loadingOverlay = document.getElementById('cal-loading');
           const hasCalIframe = calContainer && calContainer.querySelector('iframe');
           if (hasCalIframe || tries >= maxTries) {
@@ -1467,15 +1459,15 @@
       resizeCanvas();
       tickCanvas();
 
-      // ============ FAB / BOOKING ACTIONS ============
+      // ============ FAB ============
       const fab = document.getElementById('fab-book');
       if (fab) {
         fab.addEventListener('click', function() {
-          document.getElementById('my-cal-inline-me')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          document.getElementById('my-cal-inline-booking')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
       }
 
     })();
   </script>
 </body>
-</html>
+          </html>
