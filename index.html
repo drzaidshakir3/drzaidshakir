@@ -820,10 +820,25 @@
       calLink: "zaid-shakir-iin6pv/booking",
     });
 
-    Cal.ns.booking("ui", {
-      hideEventTypeDetails: false,
-      layout: "month_view"
-    });
+   Cal.ns.booking("ui", {
+  theme: "light",
+  hideEventTypeDetails: false,
+  layout: "month_view",
+  cssVarsPerTheme: {
+    light: {
+      "cal-brand": "#6c5862",
+      "cal-brand-emphasis": "#4e3d47",
+      "cal-brand-text": "#ffffff",
+      "cal-bg": "#faf6f1",
+      "cal-bg-emphasis": "#f3ebe1",
+      "cal-text-emphasis": "#372931",
+      "cal-text": "#4e3d47",
+      "cal-text-subtle": "#6c5862",
+      "cal-border": "#dcc9d3",
+      "cal-border-booker": "#f4c871"
+    }
+  }
+});
   </script>
 
   <!-- MAIN SCRIPT -->
