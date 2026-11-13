@@ -393,16 +393,18 @@
     @media (max-width: 640px) {
       .cal-wrap { min-height: 900px; }
     }
-    .cal-wrap #my-cal-inline-booking {
+    /* Cal embed wrapper height (فقط داخل الحاوية) */
+    .cal-wrap #my-cal-inline-me {
       width: 100% !important;
       height: 720px !important;
       overflow: auto;
       background: #fffdf9;
     }
     @media (max-width: 640px) {
-      .cal-wrap #my-cal-inline-booking { height: 900px !important; }
+      .cal-wrap #my-cal-inline-me { height: 900px !important; }
     }
 
+    /* Cal loading shimmer */
     .cal-loading {
       position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
@@ -472,7 +474,7 @@
   <header id="main-header" class="fixed inset-x-0 top-0 z-50 transition-all duration-500" style="transform: translateY(-80px); opacity: 0;">
     <div id="header-inner" class="mx-auto flex items-center justify-between gap-4 px-5 transition-all duration-500 lg:px-10 max-w-7xl bg-transparent py-5">
 
-      <a href="index.html" class="group flex items-center gap-3 shrink-0 magnetic" aria-label="logo" data-cursor-label="الرئيسية">
+      <a href="" class="group flex items-center gap-3 shrink-0 magnetic" aria-label="logo" data-cursor-label="الرئيسية">
         <span class="animate-wiggle-soft relative flex size-11 items-center justify-center overflow-hidden rounded-xl transition-transform duration-500 group-hover:scale-110" style="background: linear-gradient(135deg, #6c5862, #4e3d47); box-shadow: 0 10px 24px -8px rgba(78,61,71,0.5);">
           <img src="logo.png" alt="Logo" class="size-7 object-contain" />
           <span class="absolute inset-0 rounded-xl border border-white/20"></span>
@@ -484,15 +486,15 @@
       </a>
 
       <nav class="hidden items-center gap-1 lg:flex" aria-label="main">
-        <a href="index.html" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="الرئيسية">
+        <a href="https://drzaidshakir.com/" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="الرئيسية">
           <span class="pill-bg"></span>
           <span class="relative" data-i18n="nav.home">الرئيسية</span>
         </a>
-        <a href="about.html" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="من نحن">
+        <a href="https://drzaidshakir4.github.io/web/about.html" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="من نحن">
           <span class="pill-bg"></span>
           <span class="relative" data-i18n="nav.about">من نحن</span>
         </a>
-        <a href="services.html" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="الخدمات">
+        <a href="https://drzaidshakir4.github.io/web/services.html" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="الخدمات">
           <span class="pill-bg"></span>
           <span class="relative" data-i18n="nav.services">الخدمات</span>
         </a>
@@ -500,7 +502,7 @@
           <span class="pill-bg"></span>
           <span class="relative" data-i18n="nav.booking">الحجز</span>
         </a>
-        <a href="contact.html" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="تواصل">
+        <a href="https://drzaidshakir4.github.io/web/contact.html" class="nav-pill relative rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-300 text-mauve/75 hover:text-mauve-ink magnetic" data-cursor-label="تواصل">
           <span class="pill-bg"></span>
           <span class="relative" data-i18n="nav.contact">تواصل معنا</span>
         </a>
@@ -538,15 +540,15 @@
       </button>
     </div>
     <nav class="flex flex-1 flex-col items-start justify-center gap-2 px-8">
-      <a href="index.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
+      <a href="https://drzaidshakir.com/" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
         <span class="text-2xl font-bold text-mauve-deep transition-colors group-hover:text-gold-deep" data-i18n="nav.home">الرئيسية</span>
         <span class="text-xs font-semibold tracking-widest text-gold-deep/60">01</span>
       </a>
-      <a href="about.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
+      <a href="https://drzaidshakir4.github.io/web/about.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
         <span class="text-2xl font-bold text-mauve-deep transition-colors group-hover:text-gold-deep" data-i18n="nav.about">من نحن</span>
         <span class="text-xs font-semibold tracking-widest text-gold-deep/60">02</span>
       </a>
-      <a href="services.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
+      <a href="https://drzaidshakir4.github.io/web/services.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
         <span class="text-2xl font-bold text-mauve-deep transition-colors group-hover:text-gold-deep" data-i18n="nav.services">الخدمات</span>
         <span class="text-xs font-semibold tracking-widest text-gold-deep/60">03</span>
       </a>
@@ -554,13 +556,13 @@
         <span class="text-2xl font-bold text-mauve-deep transition-colors group-hover:text-gold-deep" data-i18n="nav.booking">الحجز</span>
         <span class="text-xs font-semibold tracking-widest text-gold-deep/60">04</span>
       </a>
-      <a href="contact.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
+      <a href="https://drzaidshakir4.github.io/web/contact.html" class="mobile-nav-link group flex w-full items-center justify-between border-b border-mauve/10 py-4" style="opacity:0; transform: translateX(40px);">
         <span class="text-2xl font-bold text-mauve-deep transition-colors group-hover:text-gold-deep" data-i18n="nav.contact">تواصل معنا</span>
         <span class="text-xs font-semibold tracking-widest text-gold-deep/60">05</span>
       </a>
     </nav>
     <div class="px-8 pb-10">
-      <a href="contact.html" class="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-bold text-mauve-ink" style="background: linear-gradient(115deg, #f7d997, #f4c871, #eeb44d); box-shadow: 0 14px 34px -10px rgba(207,157,69,0.7);">
+      <a href="https://drzaidshakir4.github.io/web/contact.html" class="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-bold text-mauve-ink" style="background: linear-gradient(115deg, #f7d997, #f4c871, #eeb44d); box-shadow: 0 14px 34px -10px rgba(207,157,69,0.7);">
         <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
         <span data-i18n="nav.contact">تواصل معنا</span>
       </a>
@@ -617,6 +619,7 @@
         <div class="anim-scale-in tilt-3d relative rounded-[1.8rem] p-px" data-delay="0.1" data-cursor-label="احجز" style="background: linear-gradient(to bottom, rgba(244,200,113,0.6), rgba(108,88,98,0.1), transparent); box-shadow: 0 40px 90px -40px rgba(78,61,71,0.45);">
           <div class="tilt-inner-deep cal-wrap">
 
+            <!-- Cal Loading overlay -->
             <div class="cal-loading" id="cal-loading">
               <div class="cal-loading-dots">
                 <span></span><span></span><span></span>
@@ -625,7 +628,7 @@
             </div>
 
             <!-- Cal inline container (as provided) -->
-            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-booking"></div>
+            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-me"></div>
           </div>
         </div>
 
@@ -697,7 +700,7 @@
       <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
 
         <div>
-          <a href="index.html" class="flex items-center gap-3 magnetic" data-cursor-label="الرئيسية">
+          <a href="https://drzaidshakir.com/" class="flex items-center gap-3 magnetic" data-cursor-label="الرئيسية">
             <span class="animate-wiggle-soft flex size-11 items-center justify-center rounded-xl bg-gold/[0.14] ring-1 ring-gold/35 overflow-hidden">
               <img src="logo.png" alt="Logo" class="size-7 object-contain" />
             </span>
@@ -714,10 +717,10 @@
         <div>
           <h4 class="text-xs font-bold tracking-wider text-white" data-i18n="footer.quickLinks">روابط سريعة</h4>
           <ul class="mt-4 space-y-2.5">
-            <li><a href="index.html" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.home">الرئيسية</span></a></li>
-            <li><a href="about.html" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.about">من نحن</span></a></li>
-            <li><a href="services.html" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.services">الخدمات</span></a></li>
-            <li><a href="contact.html" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.contact">تواصل معنا</span></a></li>
+            <li><a href="https://drzaidshakir.com/" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.home">الرئيسية</span></a></li>
+            <li><a href="https://drzaidshakir4.github.io/web/about.html" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.about">من نحن</span></a></li>
+            <li><a href="https://drzaidshakir4.github.io/web/services.html" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.services">الخدمات</span></a></li>
+            <li><a href="https://drzaidshakir4.github.io/web/contact.html" class="group inline-flex items-center gap-2 text-xs text-lilac/75 transition-all duration-300 hover:text-gold"><svg class="size-3 text-gold/60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg><span data-i18n="nav.contact">تواصل معنا</span></a></li>
           </ul>
         </div>
 
@@ -780,7 +783,7 @@
   </footer>
 
   <!-- ====================================================== -->
-  <!-- CAL.COM INLINE EMBED (new: booking)                  -->
+  <!-- CAL.COM INLINE EMBED (as provided)                   -->
   <!-- ====================================================== -->
   <script type="text/javascript">
     (function (C, A, L) {
@@ -809,36 +812,25 @@
         p(cal, ar);
       };
     })(window, "https://app.cal.com/embed/embed.js", "init");
-
-    Cal("init", "booking", { origin: "https://app.cal.com" });
+    Cal("init", "me", { origin: "https://app.cal.com" });
     Cal.config = Cal.config || {};
     Cal.config.forwardQueryParams = true;
 
-    Cal.ns.booking("inline", {
-      elementOrSelector: "#my-cal-inline-booking",
-      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true", theme:"light" },
-      calLink: "zaid-shakir-iin6pv/booking",
+    Cal.ns.me("inline", {
+      elementOrSelector: "#my-cal-inline-me",
+      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true", theme: "light" },
+      calLink: "younis-akram-kzwl1w/me",
     });
 
-   Cal.ns.booking("ui", {
-  theme: "light",
-  hideEventTypeDetails: false,
-  layout: "month_view",
-  cssVarsPerTheme: {
-    light: {
-      "cal-brand": "#6c5862",
-      "cal-brand-emphasis": "#4e3d47",
-      "cal-brand-text": "#ffffff",
-      "cal-bg": "#faf6f1",
-      "cal-bg-emphasis": "#f3ebe1",
-      "cal-text-emphasis": "#372931",
-      "cal-text": "#4e3d47",
-      "cal-text-subtle": "#6c5862",
-      "cal-border": "#dcc9d3",
-      "cal-border-booker": "#f4c871"
-    }
-  }
-});
+    Cal.ns.me("ui", {
+      theme: "light",
+      cssVarsPerTheme: {
+        light: { "cal-brand": "#6c5862" },
+        dark: { "cal-brand": "#f4c871" }
+      },
+      hideEventTypeDetails: false,
+      layout: "month_view"
+    });
   </script>
 
   <!-- MAIN SCRIPT -->
@@ -849,6 +841,7 @@
       const isFinePointer = window.matchMedia('(pointer: fine)').matches;
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+      // ============ TRANSLATIONS ============
       const translations = {
         ar: {
           'brand.name': 'د. زيد شاكر',
@@ -1071,10 +1064,10 @@
       // Hide cal loading overlay after Cal renders
       (function waitForCal() {
         let tries = 0;
-        const maxTries = 40;
+        const maxTries = 40; // ~20s
         const interval = setInterval(function() {
           tries++;
-          const calContainer = document.getElementById('my-cal-inline-booking');
+          const calContainer = document.getElementById('my-cal-inline-me');
           const loadingOverlay = document.getElementById('cal-loading');
           const hasCalIframe = calContainer && calContainer.querySelector('iframe');
           if (hasCalIframe || tries >= maxTries) {
@@ -1473,15 +1466,16 @@
       });
       resizeCanvas();
       tickCanvas();
-      // ============ FAB ============
+
+      // ============ FAB / BOOKING ACTIONS ============
       const fab = document.getElementById('fab-book');
       if (fab) {
         fab.addEventListener('click', function() {
-          document.getElementById('my-cal-inline-booking')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          document.getElementById('my-cal-inline-me')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
       }
 
     })();
   </script>
 </body>
-          </html>
+</html>
